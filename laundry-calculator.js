@@ -134,7 +134,6 @@ function calculate() { // Calculate function to determine the number of top-ups 
 }
 
 function laundryCalculator() { // Top-level function for the application
-	$("#calculatorOutput").empty();
 	if (checkValues()) {
 		$("#errorOutput").empty();
 		setValues();
