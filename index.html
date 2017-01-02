@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+
+<title>Robert Fairley - Optimal Laundry Spending Calculator</title>
+<meta name="description" content="A calculator that allows you to find the best way to pay for laundry.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="revisit-after" content="1 month">
+<meta name="robots" CONTENT="all">
+
+<link rel="stylesheet" type="text/css" href="project.css">
+
+<style>
+body {
+	background: #dee6ed; /* fallback for old browsers */
+	background: -webkit-linear-gradient(to left, #dee6ed , #83bfc9); /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to left, #dee6ed , #83bfc9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */  
+}
+</style>
+
+</head>
+
+
+
+
+<body>
+
+    <header>
+
+	</header>
+	
+	<div class="nonflex page-pad footer-page-wrap">
+		<h1 class="text-mar darkgrey-text">Optimal Laundry Spending Calculator</h1>
+		<p class="text-mar darkgrey-text">For students nowadays, times are tough. Even a few unused dollars left on your laundry card means a few dollars of debt you could have paid off. Luckily, a solution has been devised: the Optimal Laundry Spending Calculator. This web app finds all of the possible ways you can pay for laundry while leaving a minimal unused balance on your laundry card.</p>
+		<p class="text-mar darkgrey-text"><strong>Note:</strong> Special thanks to <strong>Ninan</strong> for giving me the idea to investigate this!</p>
+		<div class="center-table">
+			<div class="table-cell table-pad">
+				<h2 class="text-mar darkgrey-text">Input Values ($)</h2>
+				<div>
+					<h4 class="text-mar darkgrey-text">Cost per wash in washing machine</h4>
+					<input class="input-field" id="washCost" type="text"/>
+				</div>
+				<div>
+					<h4 class="text-mar darkgrey-text">If there is an option for more intense wash, enter added cost</h4>
+					<input class="input-field" id="addedWashCost" type="text"/>
+				</div>
+				<div>
+					<h4 class="text-mar darkgrey-text">Cost per dry in dryer</h4>
+					<input class="input-field" id="dryCost" type="text"/>
+				</div>
+				<div>
+					<h4 class="text-mar darkgrey-text">Lowest amount by which laundry card can be topped up</h4>
+					<input class="input-field" id="lowestTopUp" type="text"/>
+				</div>
+				<div>
+					<h4 class="text-mar darkgrey-text">Maximum allowable unused balance on card</h4>
+					<input class="input-field" id="maxRemainingBalance" type="text"/>
+				</div>
+				<div class="text-center-align">
+					<button class="input-button corners-wide-round" type="button" onclick="laundryCalculator()"><p class="button-text text-mar">Calculate</p></button>
+				</div>
+				<div id="errorOutput">
+							
+				</div>
+
+			</div>
+			<div class="table-cell table-pad">
+				<h2 class="text-mar darkgrey-text">Your spending options:</h2>
+				<div class="output-box dot-bord">
+					<table id="calculatorOutput">
+						<tr class="table-header">
+							<th><p class="text-mar darkgrey-text"># Wash & Dry</p></th>
+							<th><p class="text-mar darkgrey-text"># Super Wash</p></th>
+							<th><p class="text-mar darkgrey-text">$ Spent on Card</p></th>
+							<th><p class="text-mar darkgrey-text">Unused $ on Card</p></th>
+						</tr>
+					</table>
+				</div>
+				<h2 id="resultTitle" class="text-mar darkgrey-text">Result</h2>
+				<div class="social-box corners-round dot-bord" id="statementOutput">
+				</div>
+			</div>
+		</div>
+		
+		
+	</div>
+	
+	<footer class="text-center-align footer-box">
+		<hr>
+		<div class="footer-pad disp-inl-bl">
+			<p class="text-mar footer-text">&copy; 2016 Robert Fairley</p>
+		</div>
+		<div class="footer-pad disp-inl-bl ">
+			<p class="text-mar footer-text">
+				<a class="link-bright" href="https://robertfairley.ca">website</a> &#x2022; 
+				<a class="link-bright" href="https://github.com/rfairley">GitHub</a> &#x2022; 
+				<a class="link-bright" href="https://www.linkedin.com/in/robertfairley">LinkedIn</a> &#x2022; 
+				<a class="link-bright" href="https://www.youtube.com/channel/UCZPKdS0zvbpYX451DPM1S0g">YouTube</a>
+			</p>
+		</div>
+		
+	</footer>
+	
+	<link href="https://fonts.googleapis.com/css?family=Jura:300%7CMartel:300%7COpen+Sans%7CBungee" rel="stylesheet">
+	
+	<script async src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+	<script async src="laundry-calculator.js"></script>
+	
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+		ga('create', 'UA-80237764-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+	
+</body>
+
+</html>
