@@ -3,10 +3,11 @@
 // of money spent given a minimum top-up amount such that the remaining balance
 // on the laundry card is below a specified value (or equal to zero).
 
-var washCost, addedWashCost, dryCost, lowestTopUp, initialBalance, moneySpent, index, maxRemainingBalance, remainingBalance;
+const MAX_WASHES = 100; // Maximum expected number of washes in an 8 month period
+const MAX_TOP_UPS = 100; // Maximum expected number of top-ups to the laundry card in an 8 month period
+
 var i, j, k; // Declare counting variables representing, respectively: number of wash and drying cycles (i), number of top ups made (j), and the number of super washes used (k)
-var MAX_WASHES = 100; // Maximum expected number of washes in an 8 month period
-var MAX_TOP_UPS = 100; // Maximum expected number of top-ups to the laundry card in an 8 month period
+
 var results = []; // Calculated results to be stored in an array of "type" Result, which is specified below
 var washCost, addedWashCost, dryCost, lowestTopUp, maxRemainingBalance; // Variables input by the user to specify needed parameters for calculation
 var initialBalance, remainingBalance, moneySpent, index; // Variables used within the calculate function
@@ -26,24 +27,24 @@ function checkValues() { // Function to validate the user's input before calcula
 	dryCostTemp = document.getElementById("dryCost").value;
 	lowestTopUpTemp = document.getElementById("lowestTopUp").value;
 	maxRemainingBalanceTemp = document.getElementById("maxRemainingBalance").value;
-	
+
 	if (!($.isNumeric( addedWashCostTemp ))) { // If no valid input received for the added cost of a super wash, assume that this value is zero
 		addedWashCostTemp = 0;
 	}
-	
+
 	if (!($.isNumeric( maxRemainingBalanceTemp ))) { // If no valid input received for the maximum acceptable remaining balance on the card, assume that this value is zero
 		maxRemainingBalanceTemp = 0;
 	}
-	
+
 	if ($.isNumeric( washCostTemp ) && $.isNumeric( addedWashCostTemp ) && $.isNumeric( dryCostTemp ) && $.isNumeric( lowestTopUpTemp ) && $.isNumeric( maxRemainingBalanceTemp )) { // If all of the user inputs are valid, make the temporary variables to be instances of the Number class, and begin checking numbers for logical errors
 		washCostTemp = new Number(washCostTemp);
 		addedWashCostTemp = new Number(addedWashCostTemp);
 		dryCostTemp = new Number(dryCostTemp);
 		lowestTopUpTemp = new Number(lowestTopUpTemp);
 		maxRemainingBalanceTemp = new Number(maxRemainingBalanceTemp);
-		
+
 		if (washCostTemp >= 0 && addedWashCostTemp >= 0 && dryCostTemp >= 0 && lowestTopUpTemp >= 0 && maxRemainingBalanceTemp >= 0) { // Check that all of the input values are positive, otherwise return an error
-		
+
 			if ((washCostTemp == 0 && dryCostTemp == 0) || lowestTopUpTemp == 0) { // Check if the cost of a wash, a dry, and lowest top-amount are equal to zero, and return an error if yes
 				$("#errorOutput").empty();
 				$("#errorOutput").append("<p class='text-mar form-error'>Please enter positive numbers for the per wash cost, per dry cost, and lowest top-up amount!</p>");
@@ -75,7 +76,7 @@ function setValues() { // Assign values from HTML form to variables, multiplying
 	washCost = new Number(document.getElementById("washCost").value) * 100;
 	dryCost = new Number(document.getElementById("dryCost").value) * 100;
 	lowestTopUp = new Number(document.getElementById("lowestTopUp").value) * 100;
-	
+
 	if (addedWashCostTemp !== 0) {
 		addedWashCost = new Number(document.getElementById("addedWashCost").value) * 100;
 	}
@@ -144,5 +145,5 @@ function laundryCalculator() { // Top-level function for the application
 	else {
 		$("#errorOutput").append("<p class='text-mar form-error'>Please try again.</p>");
 	}
-	
+
 }
